@@ -2,7 +2,9 @@ import { uesState } from "react";
 import react from "react"
 import './App.css';
 
-function Table(){
+function Table({setTypeGetData,getData}){
+const tableInfo = [...getData]
+
     return(
         <div>
             <table className="table text-center table-hover table-dark table-styling">
@@ -17,7 +19,7 @@ function Table(){
                     </tr>
                 </thead>
                 <tbody>
-
+ 
                 </tbody>
             </table>
         </div>
