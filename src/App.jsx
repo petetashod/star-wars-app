@@ -7,33 +7,27 @@ import Table from "./Table";
 import Search from "./Search";
 
 function App() {
-  const [getData, setTypeGetData] = useState();
+  const [getData, setTypeGetData] = useState([]);
+  const [url, setUrl] = useState("https://swapi.dev/api/people/");
   useEffect(() => {
     axios
-      .get("https://swapi.dev/api/people/")
+      .get(url)
       .then((res) => {
         console.log(res.data);
-        setTypeGetData(res.data);
+        setTypeGetData(res.data.results);
       })
 
-      .catch((err) => console.log(err)); // find the base api to call
-  }, [getData]);
-  console.log(getData);
-  
-  const [SearchInfo, setTypeSearchinfo] = useState({
-    name: "",
-    birth_date: "", // should be able to pass the url for each type in object
-    height: "",
-    mass: "",
-    home_world: "",
-    species: "",
-  });
+      .catch((err) => console.log(err)); 
+  }, [url]);
+ 
+ 
 
   return (
     <>
       <h1>Star Wars Search</h1>
-      <Search />
-      <Table setTypeGetData={setTypeGetData} getData={getData} />
+      <Search setUrl={setUrl}/>
+      <Table setTypeGetData={setTypeGetData} 
+      getData={getData} />
     </>
   );
 }
