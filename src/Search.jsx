@@ -4,19 +4,22 @@ import react from "react";
 import App from "./App";
 import "./App.css";
 
+
 function Search({ setTypeGetData, setUrl }) {
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        setUrl(`https://swapi.dev/api/people/?search=${handleChangeInput}`);
+        setTypeGetData(handleChangeInput);
+      };
+    
   const handleChangeInput = (e) => {
     return e.target.value;
-  };
-  const handleSearchSubmit = () => {
-    setUrl(`https://swapi.dev/api/people/?search=${handleChangeInput}`);
-    setTypeGetData(handleChangeInput);
   };
 
   return (
     <>
       <div className="input-group mb-3 search-div">
-        <form method="get"className="form-styling input-group mb-3">
+        <form action="" method="GET"className="form-styling input-group mb-3">
           <input
             type="search"
             className=" form-control input-styling"
