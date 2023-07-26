@@ -6,14 +6,16 @@ import "./App.css";
 
 
 function Search({ setTypeGetData, setUrl }) {
+    const inputValue = "";
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+        
         setUrl(`https://swapi.dev/api/people/?search=${handleChangeInput}`);
         setTypeGetData(handleChangeInput);
       };
     
   const handleChangeInput = (e) => {
-    return e.target.value;
+    return e.target.value 
   };
 
   return (
@@ -22,6 +24,7 @@ function Search({ setTypeGetData, setUrl }) {
         <form action="" method="GET"className="form-styling input-group mb-3">
           <input
             type="search"
+            value=""
             className=" form-control input-styling"
             onChange={handleChangeInput}
           ></input>
