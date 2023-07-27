@@ -25,7 +25,7 @@ function App() {
   return (
     <>
       <h1>Star Wars Search</h1>
-      <Search setUrl={setUrl} setTypeGetData={setTypeGetData}/>
+      <Search url={url} setTypeGetData={setTypeGetData} setUrl={setUrl}/>
       <Table setTypeGetData={setTypeGetData} 
       getData={getData} />
     </>

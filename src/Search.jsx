@@ -1,30 +1,30 @@
 /** @format */
 
-import react from "react";
-import App from "./App";
+import {useEffect, useState}from "react";
 import "./App.css";
 
 
-function Search({ setTypeGetData, setUrl }) {
-    const inputValue = "";
+function Search({ setTypeGetData, setUrl, url}) {
+    const [search, setSearch] = useState('');
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        
-        setUrl(`https://swapi.dev/api/people/?search=${handleChangeInput}`);
-        setTypeGetData(handleChangeInput);
+        setTypeGetData(search);
       };
     
   const handleChangeInput = (e) => {
-    return e.target.value 
+    
+    setSearch(e.target.value)
   };
 
+  useEffect(() => {
+    setUrl(`https://swapi.dev/api/people/?search=${search}`)
+  },[search])
   return (
     <>
       <div className="input-group mb-3 search-div">
         <form action="" method="GET"className="form-styling input-group mb-3">
           <input
             type="search"
-            value=""
             className=" form-control input-styling"
             onChange={handleChangeInput}
           ></input>
