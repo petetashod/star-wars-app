@@ -5,20 +5,20 @@ import "./App.css";
 
 
 function Search({ setTypeGetData, setUrl, url}) {
+    
     const [search, setSearch] = useState('');
     const handleSearchSubmit = (e) => {
         e.preventDefault();
+        setUrl(`https://swapi.dev/api/people/?search=${search}`)
         setTypeGetData(search);
       };
     
   const handleChangeInput = (e) => {
-    
+    e.preventDefault()
     setSearch(e.target.value)
   };
 
-  useEffect(() => {
-    setUrl(`https://swapi.dev/api/people/?search=${search}`)
-  },[search])
+  
   return (
     <>
       <div className="input-group mb-3 search-div">
