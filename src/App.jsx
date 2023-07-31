@@ -5,6 +5,7 @@ import axios from "axios";
 import "./App.css";
 import Table from "./Table";
 import Search from "./Search";
+import Pagination from "./Pagination";
 
 function App() {
   const [getData, setTypeGetData] = useState([]);
@@ -28,6 +29,7 @@ function App() {
       <Search url={url} setTypeGetData={setTypeGetData} setUrl={setUrl}/>
       <Table setTypeGetData={setTypeGetData} 
       getData={getData} />
+      <Pagination url={url}/>
     </>
   );
 }
