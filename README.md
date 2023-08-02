@@ -18,5 +18,4 @@ I am a huge Star Wars fan and I thought it would be cool to create an api that h
 
 ## Author
 
--**Tashod Peterson**- _Full-Stack Software Developer_ - [LinkedIn](www.linkedin.com/in/
-tashod-peterson)
+-**Tashod Peterson**- _Full-Stack Software Developer_ - [LinkedIn](www.linkedin.com/intashod-peterson)
