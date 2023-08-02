@@ -10,6 +10,7 @@ import Pagination from "./Pagination";
 function App() {
   const [getData, setTypeGetData] = useState([]);
   const [url, setUrl] = useState("https://swapi.dev/api/people/");
+
   useEffect(() => {
     axios
       .get(url)
@@ -18,18 +19,15 @@ function App() {
         setTypeGetData(res.data.results);
       })
 
-      .catch((err) => console.log(err)); 
+      .catch((err) => console.log(err));
   }, [url]);
- 
- 
 
   return (
     <>
       <h1>Star Wars Search</h1>
-      <Search url={url} setTypeGetData={setTypeGetData} setUrl={setUrl}/>
-      <Table setTypeGetData={setTypeGetData} 
-      getData={getData} />
-      <Pagination url={url}/>
+      <Search url={url} setTypeGetData={setTypeGetData} setUrl={setUrl} />
+      <Table setTypeGetData={setTypeGetData} getData={getData} />
+      <Pagination setUrl={setUrl} getData={getData} setTypeGetData={setTypeGetData} />
     </>
   );
 }
