@@ -10,7 +10,7 @@ Play it [here]()
 
 <br>
 
-<image src="/Users/tashodpeterson/Desktop/star-wars-app/Screenshot 2023-08-02 at 7.03.52 PM.png">
+<image src="Screenshot 2023-08-02 at 7.03.52 PM.png">
 
 ## Summary
 
@@ -18,5 +18,5 @@ I am a huge Star Wars fan and I thought it would be cool to create an api that h
 
 ## Author
 
--   **Tashod Peterson** - _Full-Stack Software Developer_ - [LinkedIn](www.linkedin.com/in/
+-**Tashod Peterson**- _Full-Stack Software Developer_ - [LinkedIn](www.linkedin.com/in/
 tashod-peterson)
