@@ -2,8 +2,8 @@
 import "./App.css";
 
 
-function Table({ setTypeGetData, getData }) {
-    const getDataArray = [...getData]
+function Table({ setTypeGetData: setCharactersList, charactersList }) {
+     
   return (
     <div>
       <table className="table text-center table-hover table-dark table-styling">
@@ -18,7 +18,7 @@ function Table({ setTypeGetData, getData }) {
           </tr>
         </thead>
         <tbody>
-          {getDataArray.map((person, index) => (
+          {charactersList.map((person, index) => (
             <tr key={index}>
               <td>{person.name}</td>
               <td>{person.birth_year}</td>

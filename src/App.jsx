@@ -8,7 +8,7 @@ import Search from "./Search";
 import Pagination from "./Pagination";
 
 function App() {
-  const [getData, setTypeGetData] = useState([]);
+  const [charactersList, setCharactersList] = useState([]);
   const [url, setUrl] = useState("https://swapi.dev/api/people/");
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function App() {
       .get(url)
       .then((res) => {
         console.log(res.data);
-        setTypeGetData(res.data.results);
+        setCharactersList(res.data.results);
       })
 
       .catch((err) => console.log(err));
@@ -25,9 +25,9 @@ function App() {
   return (
     <>
       <h1>Star Wars Search</h1>
-      <Search url={url} setTypeGetData={setTypeGetData} setUrl={setUrl} />
-      <Table setTypeGetData={setTypeGetData} getData={getData} />
-      <Pagination setUrl={setUrl} getData={getData} setTypeGetData={setTypeGetData} />
+      <Search url={url} setTypeGetData={setCharactersList} setUrl={setUrl} />
+      <Table setCharactersList={setCharactersList} charactersList={charactersList} />
+      <Pagination setUrl={setUrl} setCharactersList={setCharactersList} />
     </>
   );
 }
