@@ -1,9 +1,13 @@
 /** @format */
 
+import { useEffect } from "react";
 import { useState } from "react";
 
 function Pagination({ setUrl }) {
   const [pageNumber, setPageNumber] = useState(1);
+  useEffect(() => {
+    setUrl(`https://swapi.dev/api/people/?page=${pageNumber}`);
+  }, [pageNumber]);
 
   const handleNumberSelection = (e) => {
     e.preventDefault();
@@ -17,26 +21,14 @@ function Pagination({ setUrl }) {
 
   const nextPageButton = (e) => {
     e.preventDefault();
-    e.target.innerText;
-    pageNavButtons();
+    setPageNumber(pageNumber + 1);
   };
 
   const previousPageButton = (e) => {
     e.preventDefault();
-    e.target.innerText;
-    pageNavButtons();
+    setPageNumber(pageNumber - 1);
   };
 
-  function pageNavButtons() {
-    if (nextPageButton >=1) {
-      pageNumber + 1;
-      pageNumberSelection();
-    }
-    if (previousPageButton <= 9) {
-      pageNumber - 1;
-      pageNumberSelection();
-    }
-  }
   // write down the steps to get the arrows to navigate the page
   // I need a useState for holding the current page number and one to
   // hold the next page number
@@ -46,7 +38,7 @@ function Pagination({ setUrl }) {
       <nav className="navContainer">
         <ul className="pagination ">
           <li className="page-item">
-            <a className="page-link" href="#" onClick={nextPageButton}>
+            <a className="page-link" href="#" onClick={previousPageButton}>
               prev
             </a>
           </li>
@@ -96,7 +88,7 @@ function Pagination({ setUrl }) {
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#" onClick={previousPageButton}>
+            <a className="page-link" href="#" onClick={nextPageButton}>
               next
             </a>
           </li>
