@@ -21,17 +21,17 @@ function Pagination({ setUrl }) {
 
   const nextPageButton = (e) => {
     e.preventDefault();
-    setPageNumber(pageNumber + 1);
+    if (pageNumber >= 1) {
+      setPageNumber(parseInt(pageNumber)+ 1);
+    }
   };
 
   const previousPageButton = (e) => {
     e.preventDefault();
-    setPageNumber(pageNumber - 1);
+    if (pageNumber <= 9) {
+      setPageNumber(parseInt(pageNumber) - 1);
+    }
   };
-
-  // write down the steps to get the arrows to navigate the page
-  // I need a useState for holding the current page number and one to
-  // hold the next page number
 
   return (
     <>
