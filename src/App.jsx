@@ -26,7 +26,7 @@ function App() {
   //   },
   // ]
 
-  // for species check to see if its an empyu array if so its a human if not add the url
+  // for species check to see if its an empty array if so its a human if not add the url
 
   useEffect(() => {
     axios
