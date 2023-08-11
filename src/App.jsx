@@ -10,33 +10,42 @@ import Pagination from "./Pagination";
 function App() {
   const [charactersList, setCharactersList] = useState([]);
   const [url, setUrl] = useState("https://swapi.dev/api/people/");
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-        const charactersArray = res.data.results;
-          for (let character of charactersArray) {
-          let homeWorldUrl = character.homeworld;
-            axios.get(homeWorldUrl)
-            .then((res) => {
-              console.log(res.data);
-              character.homeworld = res.data.name
-              
-            });
-            
-          }
-          
-        
-        
-        
-         setCharactersList(charactersArray); 
-      })
-    
+   
+    let starWarsInformation = async () => {
+      setIsLoading(true);
+      let response = await axios.get(url);
+      let charactersArray = response.data.results;
 
-      .catch((err) => console.log(err));
+      for (let characters of charactersArray) {
+        const planetsInformation = await axios.get(characters.homeworld);
+        characters.homeworld = planetsInformation.data.name;
+        if (characters.species.length == 0) {
+          characters.species = "Human";
+        } else {
+          let speciesInformation = await axios.get(characters.species);
+          characters.species = speciesInformation.data.name;
+        }
+        
+        setCharactersList(charactersArray);
+        setIsLoading(false);
+      }
+    };
+  
+   
+    
+    starWarsInformation();
   }, [url]);
 
+  const loadingPage = () => {
+    if (isLoading) {
+       return <h2>Loading...</h2>;
+       
+    }
+    
+  };
+  
   return (
     <>
       <h1>Star Wars Search</h1>
@@ -45,6 +54,7 @@ function App() {
         setCharactersList={setCharactersList}
         charactersList={charactersList}
       />
+      <h1>{loadingPage()}</h1>
       <Pagination setUrl={setUrl} setCharactersList={setCharactersList} />
     </>
   );
