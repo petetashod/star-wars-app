@@ -12,7 +12,6 @@ function App() {
   const [url, setUrl] = useState("https://swapi.dev/api/people/");
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-   
     let starWarsInformation = async () => {
       setIsLoading(true);
       let response = await axios.get(url);
@@ -27,25 +26,21 @@ function App() {
           let speciesInformation = await axios.get(characters.species);
           characters.species = speciesInformation.data.name;
         }
-        
+
         setCharactersList(charactersArray);
         setIsLoading(false);
       }
     };
-  
-   
-    
+
     starWarsInformation();
   }, [url]);
 
   const loadingPage = () => {
     if (isLoading) {
-       return <h1>Loading...</h1>;
-       
+      return <h1>Loading...</h1>;
     }
-    
   };
-  
+
   return (
     <>
       <h1>Star Wars Search</h1>
