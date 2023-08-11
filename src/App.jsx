@@ -40,7 +40,7 @@ function App() {
 
   const loadingPage = () => {
     if (isLoading) {
-       return <h2>Loading...</h2>;
+       return <h1>Loading...</h1>;
        
     }
     
@@ -54,7 +54,7 @@ function App() {
         setCharactersList={setCharactersList}
         charactersList={charactersList}
       />
-      <h1>{loadingPage()}</h1>
+      <div>{loadingPage()}</div>
       <Pagination setUrl={setUrl} setCharactersList={setCharactersList} />
     </>
   );
