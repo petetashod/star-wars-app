@@ -3,7 +3,7 @@ import "./App.css";
 
 
 function Table({  charactersList}) {
-     let charactersArrayList = [...charactersList]
+     let charactersArrayList = ...charactersList
   return (
     <div>
       <table className="table text-center table-hover table-dark table-styling">
