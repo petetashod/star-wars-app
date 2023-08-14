@@ -5,7 +5,7 @@ import axios from "axios";
 import "./App.css";
 import Table from "./Table";
 import Search from "./Search";
-import Pagination from "./Pagination";
+import Pagination from "./pagination";
 
 function App() {
   const [charactersList, setCharactersList] = useState([]);
