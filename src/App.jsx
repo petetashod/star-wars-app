@@ -11,11 +11,13 @@ function App() {
   const [charactersList, setCharactersList] = useState([]);
   const [url, setUrl] = useState("https://swapi.dev/api/people/");
   const [isLoading, setIsLoading] = useState(false);
+  const [totalCharacters, setTotalCharacters] = useState(0)
   useEffect(() => {
     let starWarsInformation = async () => {
       setIsLoading(true);
       let response = await axios.get(url);
       let charactersArray = response.data.results;
+      let numberOfCharacters = response.data.count;
 
       for (let characters of charactersArray) {
         const planetsInformation = await axios.get(characters.homeworld);
@@ -29,6 +31,7 @@ function App() {
 
         setCharactersList(charactersArray);
         setIsLoading(false);
+        setTotalCharacters(numberOfCharacters);
       }
     };
 
@@ -50,7 +53,8 @@ function App() {
         charactersList={charactersList}
       />
       <div>{loadingPage()}</div>
-      <Pagination setUrl={setUrl} setCharactersList={setCharactersList} />
+      <Pagination setUrl={setUrl} setCharactersList={setCharactersList} 
+      totalCharacters={totalCharacters} />
     </>
   );
 }

@@ -3,8 +3,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function Pagination({ setUrl }) {
+function Pagination({ setUrl, totalCharacters }) {
   const [pageNumber, setPageNumber] = useState(1);
+  const charactersPerPage = 10;
+  const displayCharacterAmount = [];
+
   useEffect(() => {
     setUrl(`https://swapi.dev/api/people/?page=${pageNumber}`);
   }, [pageNumber]);
@@ -22,7 +25,7 @@ function Pagination({ setUrl }) {
   const nextPageButton = (e) => {
     e.preventDefault();
     if (pageNumber >= 1) {
-      setPageNumber(parseInt(pageNumber)+ 1);
+      setPageNumber(parseInt(pageNumber) + 1);
     }
   };
 
@@ -33,6 +36,10 @@ function Pagination({ setUrl }) {
     }
   };
 
+  for (let i = 1; i <= Math.ceil(totalCharacters / charactersPerPage); i++) {
+    displayCharacterAmount.push(i);
+  }
+
   return (
     <>
       <nav className="navContainer">
@@ -42,51 +49,14 @@ function Pagination({ setUrl }) {
               prev
             </a>
           </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              1
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              2
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              3
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              4
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              5
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              6
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              7
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              8
-            </a>
-          </li>
-          <li className="page-item">
-            <a className="page-link" href="#" onClick={handleNumberSelection}>
-              9
-            </a>
-          </li>
+          {displayCharacterAmount.map((page, index) => (
+            <li key={index} className="page-item">
+              <a className="page-link" href="#" onClick={handleNumberSelection}>
+                {page}
+              </a>
+            </li>
+          ))}
+
           <li className="page-item">
             <a className="page-link" href="#" onClick={nextPageButton}>
               next

@@ -6,11 +6,11 @@ _Classic Star Wars API  written entirely in pure Javascript, HTML, CSS_ and Reac
 
 <br>
 
-Play it [here]()
+Try it [here](https://starwars-app-api.netlify.app/)
 
 <br>
 
-<image src="Screenshot 2023-08-02 at 7.03.52 PM.png">
+<image src="Screenshot 2023-08-15 at 9.11.25 PM.png">
 
 ## Summary
 

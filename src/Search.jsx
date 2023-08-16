@@ -4,7 +4,7 @@ import {useState}from "react";
 import "./App.css";
 
 
-function Search({ setTypeGetData, setUrl, url}) {
+function Search({ setTypeGetData, setUrl, url, isLoading}) {
     
     const [search, setSearch] = useState('');
     const handleSearchSubmit = (e) => {
@@ -17,7 +17,7 @@ function Search({ setTypeGetData, setUrl, url}) {
     e.preventDefault()
     setSearch(e.target.value)
   };
-
+ 
   
   return (
     <>
@@ -26,12 +26,12 @@ function Search({ setTypeGetData, setUrl, url}) {
           <input
             type="search"
             className=" form-control input-styling"
-            onChange={handleChangeInput}
+            onChange={handleChangeInput} disabled={isLoading}
           ></input>
           <button
             type="search"
             className="btn  btn-styling  btn-outline-secondary"
-            onClick={handleSearchSubmit}
+            onClick={handleSearchSubmit} disabled={isLoading}
           >
             Search
           </button>
