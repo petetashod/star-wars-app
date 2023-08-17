@@ -4,20 +4,19 @@ import {useState}from "react";
 import "./App.css";
 
 
-function Search({ setTypeGetData, setUrl, url, isLoading}) {
-    
+function Search({ setCharactersList, setUrl, url, isLoading, charactersList}) {
     const [search, setSearch] = useState('');
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         setUrl(`https://swapi.dev/api/people/?search=${search}`)
-        setTypeGetData(search);
+        setCharactersList(search);
       };
     
   const handleChangeInput = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
   };
- 
+  
   
   return (
     <>
@@ -26,12 +25,12 @@ function Search({ setTypeGetData, setUrl, url, isLoading}) {
           <input
             type="search"
             className=" form-control input-styling"
-            onChange={handleChangeInput} disabled={isLoading}
+            onChange={handleChangeInput} 
           ></input>
           <button
             type="search"
             className="btn  btn-styling  btn-outline-secondary"
-            onClick={handleSearchSubmit} disabled={isLoading}
+             onClick={handleSearchSubmit} disabled={!charactersList}
           >
             Search
           </button>

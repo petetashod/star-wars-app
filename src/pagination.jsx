@@ -3,7 +3,15 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function Pagination({ setUrl, totalCharacters }) {
+function Pagination({
+  setUrl,
+  totalCharacters,
+  setNextPage,
+  setPrevPage,
+  prevPage,
+  nextPage,
+  // setTotalCharacters,
+}) {
   const [pageNumber, setPageNumber] = useState(1);
   const charactersPerPage = 10;
   const displayCharacterAmount = [];
@@ -22,18 +30,12 @@ function Pagination({ setUrl, totalCharacters }) {
     setUrl(`https://swapi.dev/api/people/?page=${pageNumber}`);
   }
 
-  const nextPageButton = (e) => {
-    e.preventDefault();
-    if (pageNumber >= 1) {
-      setPageNumber(parseInt(pageNumber) + 1);
-    }
+  const nextPageButton = () => {
+    setNextPage(nextPage);
   };
 
-  const previousPageButton = (e) => {
-    e.preventDefault();
-    if (pageNumber <= 9) {
-      setPageNumber(parseInt(pageNumber) - 1);
-    }
+  const previousPageButton = () => {
+    setPrevPage(prevPage);
   };
 
   for (let i = 1; i <= Math.ceil(totalCharacters / charactersPerPage); i++) {
@@ -45,9 +47,13 @@ function Pagination({ setUrl, totalCharacters }) {
       <nav className="navContainer">
         <ul className="pagination ">
           <li className="page-item">
-            <a className="page-link" href="#" onClick={previousPageButton}>
+            <button
+              className="page-link"
+              type="button"
+              onClick={previousPageButton}
+            >
               prev
-            </a>
+            </button>
           </li>
           {displayCharacterAmount.map((page, index) => (
             <li key={index} className="page-item">
@@ -58,9 +64,13 @@ function Pagination({ setUrl, totalCharacters }) {
           ))}
 
           <li className="page-item">
-            <a className="page-link" href="#" onClick={nextPageButton}>
+            <button
+              className="page-link"
+              type="button"
+              onClick={nextPageButton}
+            >
               next
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
