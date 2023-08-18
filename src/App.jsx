@@ -34,11 +34,11 @@ function App() {
         }
 
         setCharactersList(charactersArray);
-        setIsLoading(false);
         setTotalCharacters(numberOfCharacters);
         setPrevPage(prevPageResponse);
         setNextPage(nextPageResponse);
       }
+      setIsLoading(false);
     };
 
     starWarsInformation();

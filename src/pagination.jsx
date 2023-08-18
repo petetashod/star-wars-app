@@ -10,7 +10,7 @@ function Pagination({
   setPrevPage,
   prevPage,
   nextPage,
-  // setTotalCharacters,
+ 
 }) {
   const [pageNumber, setPageNumber] = useState(1);
   const charactersPerPage = 10;
@@ -31,11 +31,11 @@ function Pagination({
   }
 
   const nextPageButton = () => {
-    setNextPage(nextPage);
+    setUrl(nextPage);
   };
 
   const previousPageButton = () => {
-    setPrevPage(prevPage);
+    setUrl(prevPage);
   };
 
   for (let i = 1; i <= Math.ceil(totalCharacters / charactersPerPage); i++) {

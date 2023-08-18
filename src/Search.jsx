@@ -16,7 +16,14 @@ function Search({ setCharactersList, setUrl, url, isLoading, charactersList}) {
     e.preventDefault()
     setSearch(e.target.value)
   };
-  
+
+  function disabledSearch () {
+  if (isLoading === false) {
+    return !isLoading 
+  } else if (isLoading === true) {
+    return isLoading
+  }
+}
   
   return (
     <>
@@ -30,7 +37,7 @@ function Search({ setCharactersList, setUrl, url, isLoading, charactersList}) {
           <button
             type="search"
             className="btn  btn-styling  btn-outline-secondary"
-             onClick={handleSearchSubmit} disabled={!charactersList}
+             onClick={handleSearchSubmit} disabled={disabledSearch()} 
           >
             Search
           </button>
