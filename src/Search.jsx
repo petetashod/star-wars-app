@@ -4,7 +4,7 @@ import {useState}from "react";
 import "./App.css";
 
 
-function Search({ setCharactersList, setUrl, url, isLoading, charactersList}) {
+function Search({ setCharactersList, setUrl, url, isLoading, charactersList, setIsLoading}) {
     const [search, setSearch] = useState('');
     const handleSearchSubmit = (e) => {
         e.preventDefault();
@@ -15,16 +15,10 @@ function Search({ setCharactersList, setUrl, url, isLoading, charactersList}) {
   const handleChangeInput = (e) => {
     e.preventDefault()
     setSearch(e.target.value)
+    
   };
 
-  function disabledSearch () {
-  if (isLoading === false) {
-    return !isLoading 
-  } else if (isLoading === true) {
-    return isLoading
-  }
-}
-  
+
   return (
     <>
       <div className="input-group mb-3 search-div">
@@ -37,7 +31,7 @@ function Search({ setCharactersList, setUrl, url, isLoading, charactersList}) {
           <button
             type="search"
             className="btn  btn-styling  btn-outline-secondary"
-             onClick={handleSearchSubmit} disabled={disabledSearch()} 
+             onClick={handleSearchSubmit} disabled={isLoading} 
           >
             Search
           </button>

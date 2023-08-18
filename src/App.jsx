@@ -58,6 +58,8 @@ function App() {
         setCharactersList={setCharactersList}
         setUrl={setUrl}
         charactersList={charactersList}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
       />
       <Table
         setCharactersList={setCharactersList}
