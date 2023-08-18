@@ -10,7 +10,7 @@ function Pagination({
   setPrevPage,
   prevPage,
   nextPage,
- 
+  isLoading,
 }) {
   const [pageNumber, setPageNumber] = useState(1);
   const charactersPerPage = 10;
@@ -51,13 +51,19 @@ function Pagination({
               className="page-link"
               type="button"
               onClick={previousPageButton}
+              disabled={isLoading}
             >
               prev
             </button>
           </li>
           {displayCharacterAmount.map((page, index) => (
             <li key={index} className="page-item">
-              <a className="page-link" href="#" onClick={handleNumberSelection}>
+              <a
+                className="page-link"
+                href="#"
+                onClick={handleNumberSelection}
+                disabled={isLoading}
+              >
                 {page}
               </a>
             </li>
@@ -68,6 +74,7 @@ function Pagination({
               className="page-link"
               type="button"
               onClick={nextPageButton}
+              disabled={isLoading}
             >
               next
             </button>

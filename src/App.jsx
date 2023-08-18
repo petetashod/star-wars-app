@@ -64,6 +64,7 @@ function App() {
       <Table
         setCharactersList={setCharactersList}
         charactersList={charactersList}
+        isLoading={isLoading}
       />
       <div>{loadingPage()}</div>
       <Pagination
