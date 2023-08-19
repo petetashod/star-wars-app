@@ -6,29 +6,17 @@ import { useState } from "react";
 function Pagination({
   setUrl,
   totalCharacters,
-  setNextPage,
-  setPrevPage,
   prevPage,
   nextPage,
   isLoading,
 }) {
-  const [pageNumber, setPageNumber] = useState(1);
   const charactersPerPage = 10;
   const displayCharacterAmount = [];
 
-  useEffect(() => {
-    setUrl(`https://swapi.dev/api/people/?page=${pageNumber}`);
-  }, [pageNumber]);
-
   const handleNumberSelection = (e) => {
     e.preventDefault();
-    setPageNumber(e.target.textContent);
-    pageNumberSelection();
+    setUrl(`https://swapi.dev/api/people/?page=${e.target.textContent}`);
   };
-
-  function pageNumberSelection() {
-    setUrl(`https://swapi.dev/api/people/?page=${pageNumber}`);
-  }
 
   const nextPageButton = () => {
     setUrl(nextPage);

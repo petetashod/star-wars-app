@@ -14,6 +14,7 @@ function App() {
   const [totalCharacters, setTotalCharacters] = useState(0);
   const [nextPage, setNextPage] = useState([]);
   const [prevPage, setPrevPage] = useState(null);
+
   useEffect(() => {
     let starWarsInformation = async () => {
       setIsLoading(true);
@@ -44,11 +45,11 @@ function App() {
     starWarsInformation();
   }, [url]);
 
-  const loadingPage = () => {
+  
     if (isLoading) {
       return <h1>Loading...</h1>;
     }
-  };
+  
 
   return (
     <>
@@ -66,16 +67,13 @@ function App() {
         charactersList={charactersList}
         isLoading={isLoading}
       />
-      <div>{loadingPage()}</div>
       <Pagination
         setUrl={setUrl}
-        setCharactersList={setCharactersList}
         totalCharacters={totalCharacters}
-        setTotalCharacters={setTotalCharacters}
-        setPrevPage={setPrevPage}
-        setNextPage={setNextPage}
         prevPage={prevPage}
         nextPage={nextPage}
+        isLoading={isLoading}
+        
       />
     </>
   );
